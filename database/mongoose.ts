@@ -17,9 +17,9 @@ if (!cached) {
 }
 
 export const connectToDatabase = async ()=>{
-    if (!MONGODB_URI) throw new Error('MONGO_URI must be set within .env');
+    if (!MONGODB_URI) throw new Error('MONGODB_URI must be set within .env');
     if(cached.conn) return cached.conn
-    if(cached.promise){
+    if(!cached.promise){
         cached.promise = mongoose.connect(MONGODB_URI, {bufferCommands:false})
     }
 
