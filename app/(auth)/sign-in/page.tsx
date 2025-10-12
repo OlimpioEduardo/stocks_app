@@ -5,9 +5,12 @@ import { Button } from '@/components/ui/button';
 import FooterLink from '@/components/forms/FooterLink';
 
 import InputField from '@/components/forms/inputField';
+import { signInWithEmail } from '@/lib/actions/actions';
+import { useRouter } from 'next/navigation';
+import { toast } from 'sonner';
 
 const SignIn = () => {
-    
+    const router = useRouter()
     const {
         register,
         handleSubmit,
@@ -20,17 +23,29 @@ const SignIn = () => {
         mode: 'onBlur',
     });
 
+       const onSubmit = async (data: SignInFormData) => {
+            try {
+                const result = await signInWithEmail(data);
+                if(result.success) router.push('/');
+            } catch (e) {
+                console.error(e);
+                toast.error('Sign up failed', {
+                    description: e instanceof Error ? e.message : 'Failed to Sign in.'
+                })
+            }
+        }
+
     
 
     return (
         <>
             <h1 className="form-title">Welcome back</h1>
 
-            <form  className="space-y-5">
+            <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
                 <InputField
                     name="email"
                     label="Email"
-                    placeholder="contact@jsmastery.com"
+                    placeholder="contact@youremail.com"
                     register={register}
                     error={errors.email}
                     validation={{ required: 'Email is required', pattern: /^\w+@\w+\.\w+$/ }}
