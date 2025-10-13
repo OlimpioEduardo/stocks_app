@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 import FooterLink from '@/components/forms/FooterLink';
 
 import InputField from '@/components/forms/inputField';
-import { signInWithEmail } from '@/lib/actions/actions';
+import { signInWithEmail } from '@/lib/actions/auth.actions';
 import { useRouter } from 'next/navigation';
 import { toast } from 'sonner';
 

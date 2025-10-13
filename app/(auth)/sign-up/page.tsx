@@ -10,7 +10,7 @@ import FooterLink from "@/components/forms/FooterLink";
 
 import {useRouter} from "next/navigation";
 import {toast} from "sonner";
-import { signUpWithEmail } from "@/lib/actions/actions";
+import { signUpWithEmail } from "@/lib/actions/auth.actions";
 import InputField from "@/components/forms/inputField";
 
 const SignUp = () => {
