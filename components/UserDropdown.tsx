@@ -13,7 +13,7 @@ import { Button } from "./ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { LogOut } from "lucide-react";
 import NavItems from "./NavItems";
-import { signOut } from "@/lib/actions/actions";
+import { signOut } from "@/lib/actions/auth.actions";
 
 
 const UserDropdown = ({user}: {user:User}) => {
